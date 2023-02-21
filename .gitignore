@@ -1,4 +1,7 @@
 # Logs
+
+src/request.jsx
+
 logs
 *.log
 npm-debug.log*
