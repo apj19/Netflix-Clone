@@ -29,7 +29,7 @@ function Banner({fetchUrl}) {
       
     }, []);
 
-    // console.log(movie);
+    // console.log(movie.id);
     // console.log(`${imgsrc}${movie}`);
 
     function truncate(str,n){
@@ -44,7 +44,9 @@ function Banner({fetchUrl}) {
  
  
     return (
-    <div  className={`w-[100%]  bg-center bg-cover h-[450px] pt-[50px]  object-contain  flex flex-col justify-center items-start text-[white] relative`} style={{backgroundImage: `url(${imgsrc}${movie?.backdrop_path || movie?.poster_path})`}}>
+    <div  className={`w-[100%]  bg-center bg-cover h-[450px] pt-[50px]  object-contain  flex flex-col justify-center items-start text-[white] relative`} 
+    style={{backgroundImage: `url(
+        ${imgsrc}${movie?.backdrop_path || movie?.poster_path})`}}>
         
         <h1 className='pl-16 uppercase text-[2.5rem] '>{movie?.title || movie?.name || movie?.original_name}</h1>
 
