@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import movieTrailer from 'movie-trailer';
 
 
-function Row({title,fetchUrl,isNetflix}) {
+function Row({title,fetchUrl,isNetflix,isTopTen}) {
   
-  const imgsrc="https://image.tmdb.org/t/p/original"
+  const imgsrc="https://image.tmdb.org/t/p/w500"
   const [movies,setMovies]=useState([]);
   const [trailerUrl,setTraileurl]= useState("");
 
@@ -49,34 +49,72 @@ function Row({title,fetchUrl,isNetflix}) {
     
     return (
 
-    <div className='flex flex-col ml-[20px] text-[white] '>
-        <h2 className='text-[1.5rem]'>{title}</h2>
-        <div className="flex overflow-y-hidden overflow-x-scroll p-[20px] scrollbar-hide ">
-        {movies.map((m,i)=>{
-              return <img key={i}  onClick={event => imgclicked(event, m)}
-              src={`${imgsrc}${isNetflix ? m.poster_path:m.backdrop_path}`} 
-            alt={m.title} className={`object-contain w-[100%] max-h-[100px] ease-in-out duration-300 mr-[20px] hover:scale-110 ${isNetflix && "max-h-[250px]"}`}/>
-        })}
+    <>
+      <h2 className='text-[white] text-[1.5rem] my-2 ml-8 '>{title}</h2>
+      <div className='flex items-center ml-6 '>
+        <div className='w-full h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
+        scrollbar-hide relative mb-4'>
+            {movies.map((m,i)=>(
+              <div key={i}  className='w-[208px] group  ml-4 inline-block relative'>
+                <img className={`w-[100%] object-contain ${!isNetflix && "h-[150px]"} group-hover:scale-110 ease-in duration-300   `}
+                src={`${imgsrc}${isNetflix ? m.poster_path:m.backdrop_path}`}
+                alt={m.title}
+                />
 
-        </div> 
-        
-        
+                {isTopTen && <div className=' absolute  justify-center top-[35px] left-[-10px] w-full h-full '>
+                <h2 className='text-[5rem] font-extrabold text-[white] '>{i+1}</h2>
+                </div>
+                }
+                
 
-          {trailerUrl && <iframe className='w-full h-[300px]'
-              
-              src={`https://www.youtube.com/embed/${trailerUrl}`}
-              
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="Embedded youtube"
-              
-            />}  
+                
+              </div>
+            ))}
 
-            
+        </div>
+
+      </div>
+
     
-    
-    </div>
+    </>
+
+
+
   )
 }
 
 export default Row
+
+
+// {!isNetflix && <p className='text-[0.8rem] text-center text-[white] absolute bottom-0'>{m.title || m?.name}</p>}
+
+// <div className=''>
+    //         <h2 className='text-[1.5rem] my-8 text-[white]'>{title}</h2>
+    //         <div className="flex items-center p-[25px] overflow-y-hidden overflow-x-scroll  scrollbar-hide">
+
+    //           {movies.map((m,i)=>(
+                
+                  
+    //               <img key={i}  onClick={event => imgclicked(event, m)}
+    //                   src={`${imgsrc}${isNetflix ? m.poster_path:m.backdrop_path}`} 
+    //                   alt={m.title} className={` w-[100%] h-[150px] ease-in-out duration-300 mr-[20px] hover:scale-110 ${isNetflix && "h-[250px]"} hover:scale-110 block`}/> 
+                  
+                  
+    //           ))}
+            
+              
+    //         </div> 
+            
+        
+
+    //       {/* {trailerUrl && <iframe className='w-full h-[300px]'
+              
+    //           src={`https://www.youtube.com/embed/${trailerUrl}`}
+              
+    //           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    //           allowFullScreen
+    //           title="Embedded youtube"
+              
+    //         />}   */}
+    
+    // </div>

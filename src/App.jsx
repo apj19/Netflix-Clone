@@ -9,7 +9,7 @@ function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <div className="flex flex-col justify-center items-center  min-w-[375px] max-w-[1440px] bg-[#111] ">
+    <div className="  min-w-[375px] max-w-[1440px] bg-[#111] ">
       {/* nav */}
       <Navbar/>
 
@@ -22,6 +22,7 @@ function App() {
       <Row title={"NETFLIX ORIGINALS"} fetchUrl={requests.fetchNetflixOriginals} isNetflix={true}
       />
 
+       <Row title={"TOP 10 MOVIES"} fetchUrl={requests.fetchTopTen} isTopTen={true} />
        <Row title={"TRENDING NOW"} fetchUrl={requests.fetchTrending} />
        <Row title={"TOP RATED"} fetchUrl={requests.fetchTopRated} />
 
