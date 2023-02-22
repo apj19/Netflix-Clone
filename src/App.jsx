@@ -9,7 +9,7 @@ function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <div className="  min-w-[375px] max-w-[1440px] bg-[#111] ">
+    <div className="  min-w-[375px] max-w-[1440px] bg-[#111] font-['Poppins'] ">
       {/* nav */}
       <Navbar/>
 
