@@ -35,7 +35,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
     fetchData();
 
 
-  }, [])
+  }, [fetchUrl])
     //  console.log(movies);
 
     // function imgclicked(event, param){
@@ -64,7 +64,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
       <h2 className='text-[white] text-[1.5rem] my-2 ml-8 '>{title}</h2>
       <div className='flex items-center ml-6 '>
         <div className='w-full h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
-        scrollbar-hide relative mb-4'>
+        scrollbar-hide relative '>
             {movies.map((m,i)=>(
 
               <div key={i}  className='w-[208px] group  ml-4 inline-block relative'>

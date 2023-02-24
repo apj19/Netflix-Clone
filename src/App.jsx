@@ -25,12 +25,13 @@ function App() {
        <Row title={"TOP 10 MOVIES"} fetchUrl={requests.fetchTopTen} isTopTen={true} />
        <Row title={"TRENDING NOW"} fetchUrl={requests.fetchTrending} />
        <Row title={"TOP RATED"} fetchUrl={requests.fetchTopRated} />
-
        <Row title={"ACTION"} fetchUrl={requests.fetchActionMovies} />
        <Row title={"COMEDY"} fetchUrl={requests.fetchComedyMovies} />
        <Row title={"HORROR"} fetchUrl={requests.fetchHorrorMovies} />
        <Row title={"ROMANCE"} fetchUrl={requests.fetchRomanceMovies} />
-       <Row title={"DOCUMENTRIES"} fetchUrl={requests.fetchDocumentries} />
+       {/* <Row title={"DOCUMENTRIES"} fetchUrl={requests.fetchDocumentries} /> */}
+       <Row title={"ANIME"} fetchUrl={requests.fetchAnime} />
+       <Row title={"SCIENCE FICTION"} fetchUrl={requests.fetchScifi} />
 
 
 
