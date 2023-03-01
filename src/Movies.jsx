@@ -4,33 +4,34 @@ import { useEffect } from 'react';
 
 function Movies({movieName}) {
     // console.log(movieName);
-    const [moviedata,setMovieData]=useState({});
+    // const [moviedata,setMovieData]=useState(movieName);
+    console.log(movieName);
 
-    useEffect(() => {
+    // useEffect(() => {
       
-        async function fetchMovieData(movie){
+    //     async function fetchMovieData(movie){
 
-            const fetchdata= await axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=d3d1dede&t=${movie}`);
+    //         const fetchdata= await axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=d3d1dede&t=${movie}`);
             
-           if(fetchdata.status==200){
-            // console.log(fetchdata.data.Title);
-            setMovieData(fetchdata.data);
+    //        if(fetchdata.status==200){
+    //         // console.log(fetchdata.data.Title);
+    //         setMovieData(fetchdata.data);
             
-           }else{
-            console.log("Service not Available");
-           }
+    //        }else{
+    //         console.log("Service not Available");
+    //        }
 
-        }
+    //     }
 
-        fetchMovieData(movieName);
-        // console.log(moviedata);
+    //     fetchMovieData(movieName);
+    //     // console.log(moviedata);
 
-    }, [])
+    // }, [])
     
   return (
     <div className=' border rounded px-8 py-8 text-[white] bg-slate-600 backdrop-blur-none '>
         
-        <div className='grid grid-cols-2 '>
+        {/* <div className='grid grid-cols-2 '>
 
         <div >
             <img className='h-40' src={`${moviedata.Poster}`} alt="Not Found"  />
@@ -60,7 +61,7 @@ function Movies({movieName}) {
         <div>
             <p>Cast:</p>
             <p className='text-[0.8rem]'>{moviedata.Actors}</p>
-        </div>
+        </div> */}
 
     </div>
   )

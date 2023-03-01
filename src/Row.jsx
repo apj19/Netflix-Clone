@@ -45,8 +45,8 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
     //  console.log(movies);
     
     function imgclicked(event, para){
-      console.log(para.title);
-      setMovieData(para.title);
+      console.log(para);
+      setMovieData(para);
       setPopUp(true);
       // setMovieData(para);
       
@@ -82,20 +82,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
                 </div>
                 }
 
-                {showPopUp && <div onClick={popupclicked} className='w-[100%] h-[100%] z-50 fixed top-0 left-0 backdrop-blur-sm transition-all duration-150 ease-in-out
-                flex justify-center items-center  '>
-                  
-                  <Movies movieName={moviedata}/>
-
-                  
-
-
-                    {/* this div for movies details */}
-                    
-                  
-
-                    
-                </div> }
+                
 
 
                 
@@ -151,3 +138,18 @@ export default Row
     //         />}   */}
     
     // </div>
+
+    {/* showPopUp && <div onClick={popupclicked} className='w-[100%] h-[100%] z-50 fixed top-0 left-0 backdrop-blur-sm transition-all duration-150 ease-in-out
+                flex justify-center items-center  '>
+                  
+                  <Movies movieName={moviedata}/>
+
+                  
+
+
+                    {/* this div for movies details */}
+                    
+                  
+
+                    
+                  
