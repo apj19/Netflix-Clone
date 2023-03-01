@@ -44,7 +44,7 @@ function Banner({fetchUrl}) {
  
  
     return (
-    <div  className={` mb-8 w-[100%]  bg-center bg-cover h-[450px] pt-[50px]  object-contain  flex flex-col justify-center items-start text-[white] relative`} 
+    <div  className={` mb-8 w-[100%]  bg-center bg-cover h-[550px] pt-[50px]  object-contain  flex flex-col justify-center items-start text-[white] relative`} 
     style={{backgroundImage: `url(
         ${imgsrc}${movie?.backdrop_path || movie?.poster_path})`}}>
         
