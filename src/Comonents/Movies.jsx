@@ -1,11 +1,26 @@
 import React, { useState }  from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import geners from './generelist';
+import Cast from './Cast';
 
-function Movies({movieName}) {
+
+
+
+function Movies() {
     // console.log(movieName);
-    // const [moviedata,setMovieData]=useState(movieName);
-    console.log(movieName);
+    const imgsrc="https://image.tmdb.org/t/p/original";
+    const {id}=useParams();
+    const obj= useLocation();
+    // console.log(obj);
+    const [moviedata,setMovieData]=useState("");
+
+    function getgeners(id){
+        return geners.find((e)=> e.id == id);
+    }
+
+    console.log(obj.state);
 
     // useEffect(() => {
       
@@ -23,15 +38,50 @@ function Movies({movieName}) {
 
     //     }
 
-    //     fetchMovieData(movieName);
+    //     fetchMovieData(id);
     //     // console.log(moviedata);
 
     // }, [])
     
   return (
-    <div className=' border rounded px-8 py-8 text-[white] bg-slate-600 backdrop-blur-none '>
+    <div className=' text-white' >
         
-        {/* <div className='grid grid-cols-2 '>
+
+        <div className={` mb-8 w-[100%]  bg-center bg-cover h-[450px] pt-[50px]  object-cover  flex flex-col justify-center items-start  text-[white] relative`} 
+    style={{backgroundImage: `url(
+        ${imgsrc}${obj.state?.backdrop_path || obj.state?.poster_path})`}}>
+            <div className='w-full h-full absolute top-0 bg-gradient-to-t from-[#111]'>
+        
+            </div>
+
+        </div>
+
+        <div className='px-16 flex' >
+            <img className='object-cover h-96' src={`${imgsrc}${obj.state?.poster_path || obj.state?.backdrop_path}`}alt="Poster"  />
+
+            <div>
+                <p>{obj.state?.title || obj.state?.name}</p>
+                <p>{obj.state?.overview}</p>
+                <div className='flex gap-2'>
+                {obj.state.genre_ids?.map((g)=>(
+                    <button className='p-2 bg-slate-700 rounded' disabled="disabled">
+                        {getgeners(g).name}</button>
+                ))}
+                </div>
+                
+            </div>
+        </div>
+
+        <Cast/>
+        
+
+        <p>{id}</p>
+        <p>{obj.state.id}</p>
+
+        
+        
+        
+         {/* <div className='grid grid-cols-2 '>
 
         <div >
             <img className='h-40' src={`${moviedata.Poster}`} alt="Not Found"  />
@@ -61,7 +111,7 @@ function Movies({movieName}) {
         <div>
             <p>Cast:</p>
             <p className='text-[0.8rem]'>{moviedata.Actors}</p>
-        </div> */}
+        </div>  */}
 
     </div>
   )

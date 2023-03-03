@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import axiosFetch from './axiosfetch'
 import { useEffect } from 'react';
-import Movies from './Movies';
+import Movies from './Comonents/Movies';
+import { Link } from 'react-router-dom';
 // import movieTrailer from 'movie-trailer';
 
 
@@ -45,7 +46,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
     //  console.log(movies);
     
     function imgclicked(event, para){
-      console.log(para);
+      // console.log(para);
       setMovieData(para);
       setPopUp(true);
       // setMovieData(para);
@@ -68,6 +69,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
             {movies.map((m,i)=>(
 
               <div key={m.id}  className='w-[208px] group  ml-4 inline-block relative'>
+                <Link to={`${m?.title || m?.name}`} state={m}>
                 <img className={`w-[100%] object-contain ${!isNetflix && "h-[150px]"} group-hover:scale-110 ease-in duration-300   `} onClick={event => imgclicked(event, m)}
                 src={`${imgsrc}${isNetflix ? m.poster_path:m.backdrop_path}`}
                 alt={m.title}
@@ -82,6 +84,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
                 </div>
                 }
 
+                </Link>
                 
 
 
