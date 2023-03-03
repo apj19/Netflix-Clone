@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // import movieTrailer from 'movie-trailer';
 
 
-function Row({title,fetchUrl,isNetflix,isTopTen,mediatype,isrecommandations}) {
+function Row({title,fetchUrl,isNetflix,isTopTen,mediatype}) {
   
   const imgsrc="https://image.tmdb.org/t/p/w500"
   const [movies,setMovies]=useState([]);
@@ -57,7 +57,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen,mediatype,isrecommandations}) {
             {movies.map((m,i)=>(
 
               <div key={m.id}  className='w-[208px] group  ml-4 inline-block relative'>
-                { !isrecommandations &&
+                
                 <Link to={`/${mediatype}/${m?.title || m?.name}`} state={{mtype:`${mediatype}`,data:m}}>
                 <img className={`w-[100%] object-contain ${!isNetflix && "h-[150px]"} group-hover:scale-110 ease-in duration-300   `} 
                 src={`${imgsrc}${isNetflix ? m.poster_path:m.backdrop_path}`}
@@ -73,14 +73,9 @@ function Row({title,fetchUrl,isNetflix,isTopTen,mediatype,isrecommandations}) {
                 </div>
                 }
 
-                </Link>}
+                </Link>
 
-                { isrecommandations &&
-                < >
-                <img className={`w-[100%] object-contain ${!isNetflix && "h-[150px]"} group-hover:scale-110 ease-in duration-300   `} 
-                src={`${imgsrc}${isNetflix ? m.poster_path:m.backdrop_path}`}
-                alt={m.title}
-                />
+                
 
                 {!isNetflix && <div className='absolute  text-[white] bottom-4 right-0 '>{`${truncate((m?.title || m?.name),15)}`}</div> }
 
@@ -91,7 +86,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen,mediatype,isrecommandations}) {
                 </div>
                 }
 
-                </> }
+                
                 
 
 

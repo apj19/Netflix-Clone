@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import Details from './Details';
 import Cast from './Cast';
 import Row from '../Row';
+import Seasons from './Seasons';
 
 
 
@@ -17,6 +18,7 @@ function TvDetails() {
     <>
     <Details details={details}/>
     <Cast mtype={mediatype} mid={details.id}/>
+    <Seasons  mid={details.id}/>
     <Row title={"Recommandations"} fetchUrl={recommandationsUrl} 
         mediatype={"tv"} isrecommandations={true} />
     </>

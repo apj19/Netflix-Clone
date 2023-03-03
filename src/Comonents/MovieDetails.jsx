@@ -53,7 +53,7 @@ function MovieDetails() {
     <Details details={details}/>
     <Cast mtype={mediatype} mid={details.id}/>
     <Row title={"Recommandations"} fetchUrl={recommandationsUrl} 
-        mediatype={"movie"} isrecommandations={true} />
+        mediatype={"movie"}  />
     
 
     

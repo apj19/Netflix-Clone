@@ -10,6 +10,8 @@ import Tv from './Comonents/Tv'
 import TvDetails from './Comonents/TvDetails'
 import Footer from './Comonents/Footer'
 import MovieDetails from './Comonents/MovieDetails'
+import SeasonDetails from './Comonents/SeasonDetails'
+import NotFound from './Comonents/NotFound'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -27,6 +29,10 @@ function App() {
 
         <Route path='movie/:id' element={<MovieDetails/>}></Route>
         <Route path='tv/:id' element={<TvDetails/>}></Route>
+        <Route path='tv/:id/season/:num' element={<SeasonDetails/>}></Route>
+        <Route path='*' element={<NotFound/>}></Route>
+
+
 
 
         

@@ -8,7 +8,7 @@ function Cast({mtype,mid}) {
 
 
     const getcastUrl= `https://api.themoviedb.org/3/${mtype}/${mid}/credits?api_key=e3ac0b161ed609f338ee40d5c30ed768`;
-    const getTralier= `https://api.themoviedb.org/3/${mtype}/${mid}/videos?api_key=e3ac0b161ed609f338ee40d5c30ed768`
+    
     function truncate(str,n){
       if(!str){
           return "Not Avaliable"
@@ -32,7 +32,7 @@ function Cast({mtype,mid}) {
       fetchData();
       
     
-    }, []);
+    }, [getcastUrl]);
 
   
  
@@ -66,6 +66,7 @@ function Cast({mtype,mid}) {
                  
 
         </div>
+        <p>{mid}</p>
         
     </div>
   )
