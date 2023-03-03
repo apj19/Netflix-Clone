@@ -6,15 +6,11 @@ import { Link } from 'react-router-dom';
 // import movieTrailer from 'movie-trailer';
 
 
-function Row({title,fetchUrl,isNetflix,isTopTen}) {
+function Row({title,fetchUrl,isNetflix,isTopTen,mediatype,isrecommandations}) {
   
   const imgsrc="https://image.tmdb.org/t/p/w500"
   const [movies,setMovies]=useState([]);
   
-  const [showPopUp,setPopUp]=useState(false);
-
-  const [moviedata,setMovieData]=useState("");
-
 
   function truncate(str,n){
     if(!str){
@@ -29,11 +25,16 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
 
         const fetchdata= await axiosFetch.get(fetchUrl);
 
-        // console.log(fetchdata.data.results);
+        //  console.log(fetchdata.data.results.filter(
+        //   (e)=> e.backdrop_path != null
+        //  ));
+         const filtereddata=fetchdata.data.results.filter(
+          (e)=> e.backdrop_path != null
+         ); 
         if(isTopTen){
-          setMovies(fetchdata.data.results.slice(0, 10));
+          setMovies(filtereddata.slice(0, 10));
         }else{
-        setMovies(fetchdata.data.results);
+        setMovies(filtereddata);
 
         }
 
@@ -43,20 +44,7 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
 
 
   }, [fetchUrl])
-    //  console.log(movies);
     
-    function imgclicked(event, para){
-      // console.log(para);
-      setMovieData(para);
-      setPopUp(true);
-      // setMovieData(para);
-      
-      
-    }
-
-    function popupclicked(){
-      setPopUp(false);
-    }
 
     
     return (
@@ -69,8 +57,9 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
             {movies.map((m,i)=>(
 
               <div key={m.id}  className='w-[208px] group  ml-4 inline-block relative'>
-                <Link to={`${m?.title || m?.name}`} state={m}>
-                <img className={`w-[100%] object-contain ${!isNetflix && "h-[150px]"} group-hover:scale-110 ease-in duration-300   `} onClick={event => imgclicked(event, m)}
+                { !isrecommandations &&
+                <Link to={`/${mediatype}/${m?.title || m?.name}`} state={{mtype:`${mediatype}`,data:m}}>
+                <img className={`w-[100%] object-contain ${!isNetflix && "h-[150px]"} group-hover:scale-110 ease-in duration-300   `} 
                 src={`${imgsrc}${isNetflix ? m.poster_path:m.backdrop_path}`}
                 alt={m.title}
                 />
@@ -80,11 +69,29 @@ function Row({title,fetchUrl,isNetflix,isTopTen}) {
                 
 
                 {isTopTen && <div className=' absolute  justify-center top-[35px] left-[-10px]hover:scale-90 ease-in duration-300 '>
-                <h2 className='text-[5rem] font-extrabold text-[white] '>{i+1}</h2>
+                <h2 className='text-[5rem] font-extrabold text-[white]  '>{i+1}</h2>
                 </div>
                 }
 
-                </Link>
+                </Link>}
+
+                { isrecommandations &&
+                < >
+                <img className={`w-[100%] object-contain ${!isNetflix && "h-[150px]"} group-hover:scale-110 ease-in duration-300   `} 
+                src={`${imgsrc}${isNetflix ? m.poster_path:m.backdrop_path}`}
+                alt={m.title}
+                />
+
+                {!isNetflix && <div className='absolute  text-[white] bottom-4 right-0 '>{`${truncate((m?.title || m?.name),15)}`}</div> }
+
+                
+
+                {isTopTen && <div className=' absolute  justify-center top-[35px] left-[-10px]hover:scale-90 ease-in duration-300 '>
+                <h2 className='text-[5rem] font-extrabold text-[white]  '>{i+1}</h2>
+                </div>
+                }
+
+                </> }
                 
 
 

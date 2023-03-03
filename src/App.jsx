@@ -5,6 +5,11 @@ import Navbar from './Navbar'
 import Home from './Comonents/Home'
 import { Route, Routes } from 'react-router-dom'
 import Movies from './Comonents/Movies'
+import Movie from './Comonents/Movie'
+import Tv from './Comonents/Tv'
+import TvDetails from './Comonents/TvDetails'
+import Footer from './Comonents/Footer'
+import MovieDetails from './Comonents/MovieDetails'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -16,15 +21,19 @@ function App() {
       <Routes>
     
         <Route path='/' element={<Home/>}></Route>
-        <Route path='/movie' element={<Home/>}></Route>
-        <Route path='/tv' element={<Home/>}></Route>
+        <Route path='/movie' element={<Movie/>}></Route>
+        <Route path='/tv' element={<Tv/>}></Route>
 
 
-        <Route path='/:id' element={<Movies/>}></Route>
+        <Route path='movie/:id' element={<MovieDetails/>}></Route>
+        <Route path='tv/:id' element={<TvDetails/>}></Route>
+
 
         
 
       </Routes>
+
+      <Footer/>
 
      
 

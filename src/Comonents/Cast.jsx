@@ -1,30 +1,73 @@
 import React, { useState , useEffect} from 'react';
-import axiosFetch from '../axiosfetch'
+import axios from 'axios';
 
-function Cast() {
+function Cast({mtype,mid}) {
 
     const [casts,setCasts]=useState([]);
+  const imgsrc="https://image.tmdb.org/t/p/original";
 
-    const getcastUrl= `movie/640146/credits?api_key=e3ac0b161ed609f338ee40d5c30ed768`
 
-    // useEffect(() => {
-    //     async function fetchData(){
+    const getcastUrl= `https://api.themoviedb.org/3/${mtype}/${mid}/credits?api_key=e3ac0b161ed609f338ee40d5c30ed768`;
+    const getTralier= `https://api.themoviedb.org/3/${mtype}/${mid}/videos?api_key=e3ac0b161ed609f338ee40d5c30ed768`
+    function truncate(str,n){
+      if(!str){
+          return "Not Avaliable"
+      }else{
+          return str.length > n ? str.substr(0,n)+"...":str;
+      }
+  }
 
-    //         const fetchdata= await axiosFetch.get(fetchUrl);
-    
-    
-    //     }
-    
-    //     fetchData();
+
+    useEffect(() => {
+      async function fetchData(){
+
+          const fetchdata= await axios.get(getcastUrl);
+          setCasts(fetchdata.data.cast.slice(0, 10));
+          // console.log(fetchdata.data.cast.slice(0, 5));
+
+  
+  
+      }
+  
+      fetchData();
       
-    // }, [])
+    
+    }, []);
+
+  
+ 
     
     
 
   return (
-    <>
-        <h2 className='text-[white] text-[1.5rem] my-2 ml-8 '>Cast</h2>
-    </>
+    <div className='text-[white]'>
+        <h2 className=' text-[1.5rem] my-2 ml-10 '>Cast</h2>
+        <div className='ml-10  w-full  h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
+        scrollbar-hide relative '>
+            {casts.map((m,i)=>(
+
+               <div key={m.id}  className='w-[150px] group  ml-4 inline-block relative'>
+                
+              <img className={`mb-2 object-cover group-hover:scale-110 ease-in duration-300 h-48  `} 
+              src={`${imgsrc}${ m?.profile_path
+              }`}
+              alt={m?.name}
+              />
+              <p className='text-[0.8rem] '>{truncate(m?.character, 15)}</p>
+              <p className='text-[0.7rem]'>{truncate(m?.name, 15)}</p>
+
+
+
+              
+            </div>
+              
+            ))}
+
+                 
+
+        </div>
+        
+    </div>
   )
 }
 

@@ -20,7 +20,7 @@ function Movies() {
         return geners.find((e)=> e.id == id);
     }
 
-    console.log(obj.state);
+    console.log(obj);
 
     // useEffect(() => {
       
@@ -48,7 +48,7 @@ function Movies() {
         
 
         <div className={` mb-8 w-[100%]  bg-center bg-cover h-[450px] pt-[50px]  object-cover  flex flex-col justify-center items-start  text-[white] relative`} 
-    style={{backgroundImage: `url(
+        style={{backgroundImage: `url(
         ${imgsrc}${obj.state?.backdrop_path || obj.state?.poster_path})`}}>
             <div className='w-full h-full absolute top-0 bg-gradient-to-t from-[#111]'>
         
@@ -65,7 +65,7 @@ function Movies() {
                 <div className='flex gap-2'>
                 {obj.state.genre_ids?.map((g)=>(
                     <button className='p-2 bg-slate-700 rounded' disabled="disabled">
-                        {getgeners(g).name}</button>
+                        {getgeners(g)?.name}</button>
                 ))}
                 </div>
                 

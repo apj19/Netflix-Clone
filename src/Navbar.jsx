@@ -30,7 +30,7 @@ function Navbar() {
       <div className='flex gap-4 justify-center items-center'>
       <p><Link to="/"><img className='w-24  object-contain' src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg" alt="netflix logo"  /></Link></p>
       
-      <p className='ml-32'><Link to="/movie">Movies</Link></p>
+      <p className='ml-16'><Link to="/movie">Movies</Link></p>
       <p className='ml-8'><Link to="/tv">Tv</Link></p>
 
       </div>
