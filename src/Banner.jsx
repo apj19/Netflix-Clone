@@ -44,18 +44,18 @@ function Banner({fetchUrl}) {
  
  
     return (
-    <div  className={` mb-8 w-[100%]  bg-center bg-cover h-[550px] pt-[50px]  object-contain  flex flex-col justify-center items-start text-[white] relative`} 
+    <div  className={` mb-8 w-[100%]  bg-center bg-cover h-[550px] pt-[50px]  md:object-contain  flex flex-col justify-center items-start text-[white] relative`} 
     style={{backgroundImage: `url(
         ${imgsrc}${movie?.backdrop_path || movie?.poster_path})`}}>
         
-        <h1 className=' z-10 pl-16 uppercase text-[2.5rem] '>{movie?.title || movie?.name || movie?.original_name}</h1>
+        <h1 className=' z-10 pl-8 md:pl-16 uppercase text-[1.5rem] text-red-500 md:text-[2.5rem] '>{movie?.title || movie?.name || movie?.original_name}</h1>
 
-        <div className='pl-16 z-10 '>
+        <div className='pl-8 md:pl-16  z-10 '>
             <button className='p-2 mr-8 hover:border   '>Play</button>
             <button className='p-2 mr-8  hover:border  '>My List</button>
         </div>
 
-        <p className=' pl-16 z-[10] max-w-[360px] text-[0.8rem]'>{`${truncate(movie.overview,250)}...`}</p>
+        <p className=' pl-8 md:pl-16 z-[10] max-w-[360px] text-[0.8rem]'>{`${truncate(movie.overview,250)}...`}</p>
 
         <div className='w-full h-full absolute top-0 bg-gradient-to-r from-[#111]'>
         

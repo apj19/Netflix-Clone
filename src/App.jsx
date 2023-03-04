@@ -29,7 +29,7 @@ function App() {
 
         <Route path='movie/:id' element={<MovieDetails/>}></Route>
         <Route path='tv/:id' element={<TvDetails/>}></Route>
-        <Route path='tv/:id/season/:num' element={<SeasonDetails/>}></Route>
+        <Route path='tv/:name/:id/season/:num' element={<SeasonDetails/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
 
 

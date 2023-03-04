@@ -21,13 +21,13 @@ function Details({details}) {
             </div>
 
     </div>
-    <div className='px-16 flex gap-8 relative bottom-28' >
-            <img className='object-cover h-96' src={`${imgsrc}${details?.poster_path || details?.backdrop_path}`}alt="Poster"  />
+    <div className='px-16 flex flex-col md:flex-row gap-8 relative bottom-28' >
+            <img className='object-cover h-80 md:h-96' src={`${imgsrc}${details?.poster_path || details?.backdrop_path}`}alt="Poster"  />
 
             <div  className='flex flex-col justify-center items-start gap-8'>
                 <p className=' md:text-[2rem] text-red-500 tracking-widest'>{details?.title || details?.name}</p>
                 <p className='text-[0.8rem] md:text-[1rem] tracking-wide'>{details?.overview}</p>
-                <div className='flex gap-2'>
+                <div className='flex gap-2 flex-wrap'>
                 {details.genre_ids?.map((g,i)=>(
                     <button key={i} className='p-2 bg-slate-700 rounded' disabled="disabled">
                         {getgeners(g)?.name}</button>

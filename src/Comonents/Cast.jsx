@@ -8,7 +8,7 @@ function Cast({mtype,mid}) {
 
 
     const getcastUrl= `https://api.themoviedb.org/3/${mtype}/${mid}/credits?api_key=e3ac0b161ed609f338ee40d5c30ed768`;
-    
+    const imgnotfound="/wwemzKWzjKYJFfCeiB57q3r4Bcm.png";
     function truncate(str,n){
       if(!str){
           return "Not Avaliable"
@@ -42,15 +42,15 @@ function Cast({mtype,mid}) {
   return (
     <div className='text-[white]'>
         <h2 className=' text-[1.5rem] my-2 ml-10 '>Cast</h2>
-        <div className='ml-10  w-full  h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
+        <div className='flex items-center ml-6 '>
+        <div className='ml-6  w-full  h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
         scrollbar-hide relative '>
             {casts.map((m,i)=>(
 
                <div key={m.id}  className='w-[150px] group  ml-4 inline-block relative'>
                 
               <img className={`mb-2 object-cover group-hover:scale-110 ease-in duration-300 h-48  `} 
-              src={`${imgsrc}${ m?.profile_path
-              }`}
+              src={`${imgsrc}${ m?.profile_path ? m?.profile_path: imgnotfound}`}
               alt={m?.name}
               />
               <p className='text-[0.8rem] '>{truncate(m?.character, 15)}</p>
@@ -66,7 +66,8 @@ function Cast({mtype,mid}) {
                  
 
         </div>
-        <p>{mid}</p>
+        </div>
+        {/* <p>{mid}</p> */}
         
     </div>
   )
