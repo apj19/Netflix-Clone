@@ -26,6 +26,7 @@ function Seasons({mid}) {
   return (
     <div className='text-[white]'>
         <h2 className=' text-[1.5rem] my-2 ml-10 '>Seasons</h2>
+        <div className='flex items-center ml-6 '>
         <div className='ml-10  w-full  h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
         scrollbar-hide relative '>
             {seasons.map((m,i)=>(
@@ -50,7 +51,7 @@ function Seasons({mid}) {
                  
 
         </div>
-        
+        </div>
         
     </div>
   )
