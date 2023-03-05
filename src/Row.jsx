@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import axiosFetch from './axiosfetch'
 import { useEffect } from 'react';
-import Movies from './Comonents/Movies';
+// import Movies from './Comonents/Movies';
 import { Link } from 'react-router-dom';
+
+
+
 // import movieTrailer from 'movie-trailer';
 
 
@@ -43,7 +46,20 @@ function Row({title,fetchUrl,isNetflix,isTopTen,mediatype}) {
     fetchData();
 
 
-  }, [fetchUrl])
+  }, [fetchUrl]);
+
+  
+  function leftArrow(e){
+    const slide=e.target.nextSibling;
+    // console.log(e.target.nextSibling);
+    slide.scrollLeft+=220;
+  }
+  function rightArrow(e){
+    const slide=e.target.previousSibling;
+    // console.log(e.target.previousSibling);
+    // console.log(e.target.parentElement);
+    slide.scrollLeft-=220;
+  }
     
 
     
@@ -51,8 +67,14 @@ function Row({title,fetchUrl,isNetflix,isTopTen,mediatype}) {
 
     <>
       <h2 className='text-[white] text-[1.5rem] my-2 ml-8 '>{title}</h2>
-      <div className='flex items-center ml-6 '>
-        <div className='w-full h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
+      <div className='flex items-center mx-6 gap-4 '>
+      {/* <p onClick={event =>leftArrow(event) } className='text-white cursor-pointer hidden md:block' >a</p> */}
+      
+      <i onClick={event =>leftArrow(event) } className="fa-solid fa-chevron-left text-white cursor-pointer hidden md:block"></i>
+      
+
+      
+        <div   className='w-full h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
         scrollbar-hide relative '>
             {movies.map((m,i)=>(
 
@@ -86,17 +108,24 @@ function Row({title,fetchUrl,isNetflix,isTopTen,mediatype}) {
                 </div>
                 }
 
-                
+              
                 
 
 
                 
               </div>
             ))}
+            
+           
+
+
 
                  
 
         </div>
+       
+
+      <i onClick={event =>rightArrow(event) } class="fa-solid fa-chevron-right cursor-pointer text-white hidden md:block"></i>
 
       </div>
 
@@ -109,6 +138,14 @@ function Row({title,fetchUrl,isNetflix,isTopTen,mediatype}) {
 }
 
 export default Row
+
+{/* <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 stroke-white  cursor-pointer">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg> */}
+
+      // <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 stroke-white  cursor-pointer">
+      //   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      // </svg>
 
 
 // {!isNetflix && <p className='text-[0.8rem] text-center text-[white] absolute bottom-0'>{m.title || m?.name}</p>}

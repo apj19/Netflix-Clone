@@ -22,11 +22,24 @@ function Seasons({mid}) {
         fetchData();
         
       }, [getNumberofSeasonsUrl]);
+      function leftArrow(e){
+        const slide=e.target.nextSibling;
+        // console.log(e.target.nextSibling);
+        slide.scrollLeft+=220;
+      }
+      function rightArrow(e){
+        const slide=e.target.previousSibling;
+        // console.log(e.target.previousSibling);
+        // console.log(e.target.parentElement);
+        slide.scrollLeft-=220;
+      }
+  
 
   return (
     <div className='text-[white]'>
         <h2 className=' text-[1.5rem] my-2 ml-10 '>Seasons</h2>
-        <div className='flex items-center ml-6 '>
+        <div className='flex items-center mx-6 gap-2 '>
+        <i onClick={event =>leftArrow(event) } className="fa-solid fa-chevron-left text-white cursor-pointer hidden md:block"></i>
         <div className='ml-10  w-full  h-full overflow-x-scroll overflow-y-hidden whitespace-nowrap cursor-pointer
         scrollbar-hide relative '>
             {seasons.map((m,i)=>(
@@ -51,6 +64,7 @@ function Seasons({mid}) {
                  
 
         </div>
+        <i onClick={event =>rightArrow(event) } class="fa-solid fa-chevron-right cursor-pointer text-white hidden md:block"></i>
         </div>
         
     </div>
